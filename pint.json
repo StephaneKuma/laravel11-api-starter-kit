@@ -1,0 +1,8 @@
+{
+    "preset": "per",
+    "rules": {
+        "is_null": true,
+        "declare_strict_types": true,
+        "strict_comparison": true
+    }
+}
