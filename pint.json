@@ -3,6 +3,11 @@
     "rules": {
         "is_null": true,
         "declare_strict_types": true,
-        "strict_comparison": true
+        "strict_comparison": true,
+        "ordered_imports": {
+            "sort_algorithm": "alpha",
+            "imports_order": ["class", "function", "const"],
+            "case_sensitive": true
+        }
     }
 }

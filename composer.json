@@ -11,7 +11,10 @@
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.23.1",
+        "knuckleswtf/scribe": "^4.37",
+        "larastan/larastan": "^2.9",
         "laravel/pint": "^1.16.1",
         "laravel/sail": "^1.30.1",
         "mockery/mockery": "^1.6.12",
@@ -34,10 +37,14 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:models",
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:models"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -49,6 +56,24 @@
         ],
         "pint": [
             "@php ./vendor/bin/pint"
+        ],
+        "stan": [
+            "@php ./vendor/bin/phpstan analyse"
+        ],
+        "pest": [
+            "@php ./vendor/bin/pest"
+        ],
+        "clean": [
+            "@php ./vendor/bin/pint",
+            "@php ./vendor/bin/phpstan analyse",
+            "@php ./vendor/bin/pest"
+        ],
+        "ide-helper": [
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:models"
+        ],
+        "docs": [
+            "@php artisan scribe:generate"
         ]
     },
     "extra": {
